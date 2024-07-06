@@ -22,20 +22,26 @@ public class CraftLinkClient implements ClientModInitializer {
     public void onInitializeClient() {
         ClientTickEvents.START_CLIENT_TICK.register((client) -> onTick(client.getTickDelta()));
 
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browserResize")
-                .then(argument("scale", FloatArgumentType.floatArg(1f))
-                        .executes(context -> {
-                            final float value = FloatArgumentType.getFloat(context, "scale");
-                            Browser.scaleFactor = value;
-                            context.getSource().sendFeedback(() -> Text.literal("Browser screen scale set to %s. Press H to open it.".formatted(value)), false);
-                            return 1;
-                        }))));
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browser")
+                .executes(context -> {
+                    minecraft.setScreen(new Browser(
+                            Text.literal("CraftLink Browser")
+                    ));
+                    context.getSource().sendFeedback(() -> Text.literal("Browser opened"), false);
+                    return 1;
+                })));
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browserSearchBar")
+                .executes(context -> {
+                    minecraft.setScreen(new Search());
+                    context.getSource().sendFeedback(() -> Text.literal("Search bar opened"), false);
+                    return 1;
+                })));
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browserGo")
                 .then(argument("URL", StringArgumentType.string())
                         .executes(context -> {
                             final String value = StringArgumentType.getString(context, "URL");
-                            Browser.openURL = value;
-                            context.getSource().sendFeedback(() -> Text.literal("Browser set to open URL \"%s\". Press H to open it. You can also do this using the search bar.".formatted(value)), false);
+                            Browser.setURL(value);
+                            context.getSource().sendFeedback(() -> Text.literal("Browser set to open URL \"%s\". Press B to open it. You can also do this using the search bar.".formatted(value)), false);
                             return 1;
                         }))));
     }
