@@ -23,7 +23,7 @@ import java.net.URL;
 
 public class Browser extends BaseOwoScreen<FlowLayout> {
     public static final int BROWSER_DRAW_OFFSET = 20;
-    public static final String BROWSER_DEFAULT_HOME_URL = "https://darkveneno.github.io/CraftLink";
+    public static final String BROWSER_DEFAULT_HOME_URL = /*"https://darkveneno.github.io/CraftLink"*/ "https://www.google.com";
 
     public static float scaleFactor = 1.5f; //SCALES RESOLUTION!
     private static boolean browserRender = true;
