@@ -1,7 +1,6 @@
 package pt.carlosalmeida;
 
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -11,6 +10,7 @@ import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
+import pt.carlosalmeida.config.CraftLinkConfig;
 import pt.carlosalmeida.screen.Browser;
 import pt.carlosalmeida.screen.Search;
 
@@ -20,6 +20,7 @@ public class CraftLinkClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        MidnightConfig.init("craftlink", CraftLinkConfig.class);
         ClientTickEvents.START_CLIENT_TICK.register((client) -> onTick(client.getTickDelta()));
 
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browser")

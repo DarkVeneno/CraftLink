@@ -3,6 +3,7 @@ package pt.carlosalmeida.screen;
 import com.cinemamod.mcef.MCEF;
 import com.cinemamod.mcef.MCEFBrowser;
 import com.mojang.blaze3d.systems.RenderSystem;
+import eu.midnightdust.lib.config.MidnightConfig;
 import io.wispforest.owo.ui.base.BaseOwoScreen;
 import io.wispforest.owo.ui.component.ButtonComponent;
 import io.wispforest.owo.ui.component.Components;
@@ -17,20 +18,17 @@ import net.minecraft.client.toast.ToastManager;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
-import pt.carlosalmeida.CraftLink;
 import pt.carlosalmeida.CraftLinkClient;
+import pt.carlosalmeida.config.CraftLinkConfig;
 
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Browser extends BaseOwoScreen<FlowLayout> {
     public static final int BROWSER_DRAW_OFFSET = 20;
-    public static final String BROWSER_DEFAULT_HOME_URL = /*"https://darkveneno.github.io/CraftLink"*/ "https://www.google.com";
+    public static final String BROWSER_DEFAULT_HOME_URL = /*"https://darkveneno.github.io/CraftLink"*/ /*"https://www.google.com"*/ CraftLinkConfig.home_url;
     public static final double BROWSER_DEFAULT_ZOOM_LEVEL = 0;
-    public static final float BROWSER_DEFAULT_SCALE_FACTOR = 1f;
+    public static final float BROWSER_DEFAULT_SCALE_FACTOR = CraftLinkConfig.scale_factor;
 
     public static float scaleFactor = BROWSER_DEFAULT_SCALE_FACTOR; //SCALES RESOLUTION!
     private static boolean browserRender = true;
@@ -298,6 +296,12 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
             case GLFW.GLFW_KEY_SPACE:
                 if(controlKeyPressed) {
                     CraftLinkClient.minecraft.setScreen(new Search(this));
+                    return super.keyPressed(keyCode, scanCode, modifiers);
+                }
+                break;
+            case GLFW.GLFW_KEY_S:
+                if(controlKeyPressed) {
+                    CraftLinkClient.minecraft.setScreen(MidnightConfig.getScreen(this, "craftlink"));
                     return super.keyPressed(keyCode, scanCode, modifiers);
                 }
                 break;

@@ -11,6 +11,8 @@ import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 import pt.carlosalmeida.CraftLinkClient;
+import pt.carlosalmeida.config.CraftLinkConfig;
+
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
@@ -69,7 +71,7 @@ public class Search extends BaseOwoScreen<FlowLayout> {
     }
 
     public static String encodeURL(String search) {
-        return "https://www.google.com/search?q=" + encodePureURL(search);
+        return CraftLinkConfig.query_url + encodePureURL(search);
     }
 
     @Override

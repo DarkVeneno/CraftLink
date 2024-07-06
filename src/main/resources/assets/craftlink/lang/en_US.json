@@ -1,0 +1,17 @@
+{
+  "craftlink.midnightconfig.title":"CraftLink Browser Mod Configuration Screen",
+  "craftlink.midnightconfig.category.home_url": "Home URL",
+  "craftlink.midnightconfig.category.scale_factor": "Scale Factor",
+  "craftlink.midnightconfig.category.query_url": "Scale Factor",
+  "craftlink.midnightconfig.comment_text_explain_home_url":"The link that will be used initially when you open the browser, and when you hit CTRL+H.",
+  "craftlink.midnightconfig.home_url": "Home URL",
+  "craftlink.midnightconfig.scale_factor": "Scale Factor",
+  "craftlink.midnightconfig.comment_text_explain_query_url":"The URL prefix that CraftLink will use to construct the link for searches. This essentially allows you to choose your search engine.",
+  "craftlink.midnightconfig.comment_text_explain_query_url_2":"Or, leave it blank and use one of the predefined choices!",
+  "craftlink.midnightconfig.query_url":"Query URL",
+
+
+  "category.craftlink.browser": "CraftLink",
+  "key.craftlink.browser": "Open Browser",
+  "key.craftlink.search": "Open Search"
+}
