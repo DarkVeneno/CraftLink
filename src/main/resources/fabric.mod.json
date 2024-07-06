@@ -1,0 +1,42 @@
+{
+	"schemaVersion": 1,
+	"id": "craftlink",
+	"version": "${version}",
+	"name": "CraftLink",
+	"description": "A fully in-game web browser overlay, with some other features as well!",
+	"authors": [
+		"Carlos de Almeida"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/craftlink/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"pt.carlosalmeida.CraftLink"
+		],
+		"client": [
+			"pt.carlosalmeida.CraftLinkClient"
+		]
+	},
+	"mixins": [
+		"modid.mixins.json",
+		{
+			"config": "modid.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"mcef": "2.1.4-1.20.1"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

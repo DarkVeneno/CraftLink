@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "pt.carlosalmeida.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "ConfirmLinkScreenMixin",
+    "LinkScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
