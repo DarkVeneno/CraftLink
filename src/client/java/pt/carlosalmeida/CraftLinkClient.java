@@ -36,14 +36,6 @@ public class CraftLinkClient implements ClientModInitializer {
                     context.getSource().sendFeedback(() -> Text.literal("Search bar opened"), false);
                     return 1;
                 })));
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("browserGo")
-                .then(argument("URL", StringArgumentType.string())
-                        .executes(context -> {
-                            final String value = StringArgumentType.getString(context, "URL");
-                            Browser.setURL(value);
-                            context.getSource().sendFeedback(() -> Text.literal("Browser set to open URL \"%s\". Press B to open it. You can also do this using the search bar.".formatted(value)), false);
-                            return 1;
-                        }))));
     }
 
     public static final MinecraftClient minecraft = MinecraftClient.getInstance();
