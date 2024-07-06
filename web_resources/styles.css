@@ -1,13 +1,15 @@
 body {
     margin: 0;
     font-family: 'Minecraft', sans-serif;
-    background: url('minecraft_background.jpg') no-repeat center center fixed;
+    background: url('images/minecraft_dirt_background.webp');
     background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     color: #ffffff;
+    image-rendering: pixelated !important;
 }
 
 @font-face {
@@ -15,22 +17,36 @@ body {
     src: url('Minecraft.ttf') format('truetype');
 }
 
-.container {
-    text-align: center;
+header {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
+    width: 100%;
+    padding: 80px 0;  /* Further increased padding for a larger header */
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-header h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+header img {
+    width: auto;  /* Increased the maximum width for the logo image */
+    height: 75px;
+}
+
+main {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 
 .search-container {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 #search-input {
@@ -38,8 +54,11 @@ header h1 {
     font-size: 1.2em;
     border: 2px solid #333;
     border-radius: 5px;
-    margin-right: 10px;
-    width: 300px;
+    margin: 10px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #d3d3d3;
+    color: #000;
 }
 
 #search-engine {
@@ -47,7 +66,11 @@ header h1 {
     font-size: 1.2em;
     border: 2px solid #333;
     border-radius: 5px;
-    margin-right: 10px;
+    margin: 10px;
+    width: 100%;
+    max-width: 150px;
+    background-color: #d3d3d3;
+    color: #000;
 }
 
 button {
@@ -58,6 +81,7 @@ button {
     cursor: pointer;
     background-color: #4CAF50;
     color: #ffffff;
+    margin: 10px;
 }
 
 button:hover {
