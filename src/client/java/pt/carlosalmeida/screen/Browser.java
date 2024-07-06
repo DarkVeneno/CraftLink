@@ -17,20 +17,27 @@ import net.minecraft.client.toast.ToastManager;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
+import pt.carlosalmeida.CraftLink;
 import pt.carlosalmeida.CraftLinkClient;
+
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Browser extends BaseOwoScreen<FlowLayout> {
     public static final int BROWSER_DRAW_OFFSET = 20;
     public static final String BROWSER_DEFAULT_HOME_URL = /*"https://darkveneno.github.io/CraftLink"*/ "https://www.google.com";
+    public static final double BROWSER_DEFAULT_ZOOM_LEVEL = 0;
+    public static final float BROWSER_DEFAULT_SCALE_FACTOR = 1f;
 
-    public static float scaleFactor = 1.5f; //SCALES RESOLUTION!
+    public static float scaleFactor = BROWSER_DEFAULT_SCALE_FACTOR; //SCALES RESOLUTION!
     private static boolean browserRender = true;
     private static boolean errorDecision = false;
     private boolean controlKeyPressed = false;
     public static String openURL = BROWSER_DEFAULT_HOME_URL;
-    private double previousBrowserZoomLevel = 0f;
+    private double previousBrowserZoomLevel = BROWSER_DEFAULT_ZOOM_LEVEL;
 
     private static MCEFBrowser browser;
     private final MinecraftClient minecraft = MinecraftClient.getInstance();
@@ -43,8 +50,8 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
     SystemToast systemToastScale = new SystemToast(SystemToast.Type.PERIODIC_NOTIFICATION, Text.literal("150%"), Text.literal("Scale factor"));
     SystemToast systemToastZoom = new SystemToast(SystemToast.Type.PERIODIC_NOTIFICATION, Text.literal("---"), Text.literal("Zoom level"));
 
-    private String util_scaleText() { return  (scaleFactor * 100) + "%" + (scaleFactor == 1.5f ? " (Default)" : ""); }
-    private String util_zoomText() { return  browser.getZoomLevel() + (browser.getZoomLevel() == 0 ? " (Default)" : ""); }
+    private String util_scaleText() { return  (scaleFactor * 100) + "%" + (scaleFactor == BROWSER_DEFAULT_SCALE_FACTOR ? " (Default)" : ""); }
+    private String util_zoomText() { return  browser.getZoomLevel() + (browser.getZoomLevel() == BROWSER_DEFAULT_ZOOM_LEVEL ? " (Default)" : ""); }
 
     private void refreshScaleLabel() { systemToastScale.setContent(Text.literal(util_scaleText()), Text.literal("Scale factor")); }
     private void refreshZoomLabel() { systemToastZoom.setContent(Text.literal(util_zoomText()), Text.literal("Zoom level")); }
@@ -128,6 +135,7 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
             resizeBrowser();
             setBrowserActive(true);
             setURL(openURL);
+            browser.setZoomLevel(BROWSER_DEFAULT_ZOOM_LEVEL);
         }
     }
 
