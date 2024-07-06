@@ -25,6 +25,10 @@ repositories {
 		url = uri( 'https://maven.wispforest.io/releases/')
 	}
 
+	maven {
+		url = "https://api.modrinth.com/maven"
+	}
+
 }
 
 loom {
@@ -59,6 +63,7 @@ dependencies {
 	modImplementation "io.wispforest:owo-lib:${project.owo_version}"
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
+	modImplementation include "maven.modrinth:midnightlib:${project.midnightlib_version}"
 }
 
 processResources {
