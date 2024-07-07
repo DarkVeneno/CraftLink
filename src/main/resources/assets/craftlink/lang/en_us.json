@@ -16,7 +16,7 @@
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.GOOGLE":"Google",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.BING":"Bing",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.YAHOO":"Yahoo",
-  "craftlink.midnightconfig.enum.SearchEngineEnumChoice.DUCKDUCKGO":"DuckDuckGoo",
+  "craftlink.midnightconfig.enum.SearchEngineEnumChoice.DUCKDUCKGO":"DuckDuckGoo :)",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.ECOSIA":"Ecosia",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.ASK":"Ask",
   "craftlink.midnightconfig.comment_text_explain_help_text_overlay":"Activates an overlay explaining the browser window's basic controls. By default it is off because it might be considered intrusive.",

@@ -3,7 +3,7 @@
 	"id": "craftlink",
 	"version": "${version}",
 	"name": "CraftLink",
-	"description": "A fully in-game web browser overlay, with some other features as well!",
+	"description": "A fully in-game, configurable, and simplistic web browser for Minecraft",
 	"authors": [
 		"Carlos de Almeida"
 	],
