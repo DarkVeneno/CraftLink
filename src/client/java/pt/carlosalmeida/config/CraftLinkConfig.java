@@ -15,4 +15,6 @@ public class CraftLinkConfig extends MidnightConfig {
     public enum SearchEngineEnumChoice {                               // Enums allow the user to cycle through predefined options
         GOOGLE, BING, YAHOO, DUCKDUCKGO, ECOSIA, ASK
     }
+    @Comment(category = "other") public static Comment comment_text_explain_help_text_overlay;
+    @Entry(category = "other") public static boolean help_text_overlay = false;
 }

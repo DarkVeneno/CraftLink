@@ -10,7 +10,9 @@ import io.wispforest.owo.ui.container.Containers;
 import io.wispforest.owo.ui.container.FlowLayout;
 import io.wispforest.owo.ui.core.*;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.MultilineText;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.render.*;
 import net.minecraft.client.toast.ToastManager;
@@ -42,7 +44,7 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
     }).active(false);*/
 
     static FlowLayout helpPanel = (FlowLayout) Containers.verticalFlow(Sizing.content(), Sizing.content())
-            .child(Components.label(Text.literal("You've pressed CTRL + SHIFT. This hides the browser and shows this window.")).margins(Insets.both(0, 5)))
+            .child(Components.label(Text.literal("You're holding CTRL + SHIFT. This hides the browser and shows this window.")).color(Color.ofRgb(0xffff00)).margins(Insets.both(0, 5)))
             .child(Components.label(Text.literal("If the page's URL hasn't loaded, press CTRL + SHIFT + S to search for it instead.")).margins(Insets.both(0, 5)))
             .child(Components.label(Text.literal("CTRL + S: Configuration Screen | CTRL + H: Home page | CTRL + R: Refresh | CTRL + Space: Search")).margins(Insets.both(0, 5)))
             .child(Components.label(Text.literal("CTRL + ↑: Upscale browser | CTRL + ↓: Downscale browser")).margins(Insets.both(0, 5)))
@@ -162,6 +164,11 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
     private static void setBrowserActive(boolean activity) {
         browserRender = activity;
         //goButton.active(!activity);
+        if(activity) {
+            helpPanel.sizing(Sizing.fixed(20), Sizing.fixed(20));
+        }else{
+            helpPanel.sizing(Sizing.content(), Sizing.content());
+        }
     }
 
     private int mouseX(double x) {
@@ -235,6 +242,12 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
         }
         if(CraftLinkClient.popUpTimerScale > 0) systemToastScale.draw(guiGraphics, new ToastManager(CraftLinkClient.minecraft), 400L);
         if(CraftLinkClient.popUpTimerZoom > 0) systemToastZoom.draw(guiGraphics, new ToastManager(CraftLinkClient.minecraft), 400L);
+        if(controlKeyPressed && CraftLinkConfig.help_text_overlay) {
+            String helpString = "CTRL + SHIFT: Help++ | CTRL + Space: Search | CTRL + R: Refresh | CTRL + H: Home | CTRL + Scroll: Zoom";
+            MultilineText multilineText = MultilineText.create(textRenderer, Text.literal(helpString), width - 20);
+            multilineText.fillBackground(guiGraphics, width / 2, height - 30, 12, 2, 0x000000);
+            multilineText.drawCenterWithShadow(guiGraphics, width / 2, height - 30, 12, 0x00FF00);
+        }
     }
 
     @Override
@@ -264,7 +277,7 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
-        if(controlKeyPressed) {
+        if(controlKeyPressed && !shiftKeyPressed) {
             if (delta > 0) {
                 browser.setZoomLevel(browser.getZoomLevel() + 1);
             } else {
