@@ -19,8 +19,9 @@
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.DUCKDUCKGO":"DuckDuckGoo :)",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.ECOSIA":"Ecosia",
   "craftlink.midnightconfig.enum.SearchEngineEnumChoice.ASK":"Ask",
-  "craftlink.midnightconfig.comment_text_explain_help_text_overlay":"Activates an overlay explaining the browser window's basic controls. By default it is off because it might be considered intrusive.",
+  "craftlink.midnightconfig.comment_text_explain_help_text_overlay":"The help text overlay is an overlay explaining the browser window's basic controls. By default it is off because it might be considered intrusive. The 'Loading...' text is also off by default.",
   "craftlink.midnightconfig.help_text_overlay":"Activate Help Text Overlay",
+  "craftlink.midnightconfig.loading_text_overlay":"Activate Loading Message",
 
 
 

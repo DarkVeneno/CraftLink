@@ -245,8 +245,12 @@ public class Browser extends BaseOwoScreen<FlowLayout> {
         if(controlKeyPressed && CraftLinkConfig.help_text_overlay) {
             String helpString = "CTRL + SHIFT: Help++ | CTRL + Space: Search | CTRL + R: Refresh | CTRL + H: Home | CTRL + Scroll: Zoom";
             MultilineText multilineText = MultilineText.create(textRenderer, Text.literal(helpString), width - 20);
-            multilineText.fillBackground(guiGraphics, width / 2, height - 30, 12, 2, 0x000000);
             multilineText.drawCenterWithShadow(guiGraphics, width / 2, height - 30, 12, 0x00FF00);
+        }
+        if(browser.isLoading() && CraftLinkConfig.loading_text_overlay) {
+            String helpString = "Loading...";
+            MultilineText multilineText = MultilineText.create(textRenderer, Text.literal(helpString), width - 20);
+            multilineText.drawCenterWithShadow(guiGraphics, 25, 5, 12, 0x32a852);
         }
     }
 
