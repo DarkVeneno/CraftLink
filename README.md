@@ -1,4 +1,5 @@
 [[MODRINTH PAGE]](https://modrinth.com/mod/craftlink)
+[[CURSEFORGE PAGE]](https://www.curseforge.com/minecraft/mc-mods/craftlink)
 
 ![Here I use CraftLink's basic features: I use the search bar to open the Minecraft Wiki on the Browser.](https://cdn.modrinth.com/data/VmGDXrQb/images/5014f2a97ad6beafe147c978db911f2dc64ee40b.gif)
 
